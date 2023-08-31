@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+logging:
+  level:
+    root: info
+
+
+spring:
+  application:
+     name: spring-gateway-app
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.10.2.98:8858
+        namespace: e1c19595-0757-4231-89cb-19ea2db3bd8d
+        group: dev-1
+      config:
+        namespace: e1c19595-0757-4231-89cb-19ea2db3bd8d
+        server-addr: 10.10.2.98:8858
+        file-extension: yml
+        extension-configs:
+          - data-id: springboot_datasource_config.yml
+            group: orienlink
+            refresh: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.lucumt.model,com.lucumt.vo
+  type-handlers-package: com.lucumt.handler.mybatis
